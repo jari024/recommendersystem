@@ -1,0 +1,5 @@
+For the SQL codes for the recommender we can see that based on choosing your recommendation based on either starring, summary or the title the results are very different.
+For the Title their are only 4 results above a float of 0.05 which are all the pirates of the caribean movies, because these movies have a similair name to the movie which it is compared to.
+for the summary results their are over 50, but only 50 are shown. These are based on if the summaries are simalair and gives alot of different movies as recommendation.
+Lastly is the starring gives movies related due to their cast being similair to the reference movie. For this their are 19 results with similair actors to the refference movie.
+From these recommender algorithms we can see that it is based on different charecteristics of the movie such as title, cast or summaries. 
