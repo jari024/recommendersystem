@@ -1,6 +1,0 @@
-For the python code alternative movies had to be recommended based on the opinion om the people which reviewed a certain film. I chose to stick with the pirates movie for consistency.
-So the challenge was to get the average review for the pirates movie which was a 8.45 and then look for the authos of the reviews and see which other movies they reviewed.
-Based on this there are alot of movies which were reviewed by someone who also watched pirates. For this we first made a list of the authos which reviewed pirates.
-Then a list of the scores they gave to the other movies they had watched. Then made a list of the unique movies reviewed and then I did not know how to compare all these results in 1 loop so
-I did 50 movies which were reviewed by the authors at random to see if some movies are higher rated then pirates and thus are worth a watch.
-From the results of the 50 random movies only 1 movie got a higher review and thus is a recommendation which is 'Your name'. Which I have watched and is a great movie in my opinion.
