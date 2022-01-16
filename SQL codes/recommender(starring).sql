@@ -20,7 +20,7 @@ scoreCounts text
 
 /* Importing the dataset and checking the data*/
 \copy moviesstarring FROM '/home/pi/RSL/moviesFromMetacritic.csv' delimiter ';' CSV header;
-SELECT * FROM moviesstarring WHERE url='pirates-of-the-caribbean-the-curse-of-the-black-pearl';
+SELECT * FROM moviesstarring WHERE url='harry-potter-and-the-sorcerers-stone';
 
 /* Adding a table for the tsVector for Starring */
 ALTER TABLE moviesstarring ADD lexemesStarring tsvector;
@@ -29,10 +29,10 @@ ALTER TABLE moviesstarring ADD lexemesStarring tsvector;
 UPDATE moviesstarring SET lexemesStarring = to_tsvector(Starring);
 
 /* Testing there are enough results with Depp in it */
-SELECT url FROM moviesstarring WHERE lexemesStarring @@ to_tsquery('depp');
+SELECT url FROM moviesstarring WHERE lexemesStarring @@ to_tsquery('Radcliffe');
 
 /* Adding a table with a closeness rating as a float to determine how close a movie is */
 ALTER TABLE moviesstarring ADD rank float4;
-UPDATE moviesstarring SET rank = ts_rank(lexemesStarring,plainto_tsquery(( SELECT Summary FROM movies WHERE url='pirates-of-the-caribbean-the-curse-of-the-black-pearl')));
-CREATE TABLE recommendationsBasedOnStarringField AS SELECT url, rank FROM movies WHERE rank > 0.05 ORDER BY rank DESC LIMIT 50;
+UPDATE moviesstarring SET rank = ts_rank(lexemesStarring,plainto_tsquery(( SELECT Summary FROM moviesstarring WHERE url='harry-potter-and-the-sorcerers-stone')));
+CREATE TABLE recommendationsBasedOnStarringField AS SELECT url, rank FROM moviesstarring WHERE rank > 0.05 ORDER BY rank DESC LIMIT 50;
 \copy (SELECT * FROM recommendationsBasedOnStarringField) to '/home/pi/RSL/top50recommendations-starring.csv' WITH csv;
